@@ -1,0 +1,3 @@
+- hosts: tag_Name_node1,tag_Name_node2
+  roles:
+  - role: "k8s_slave"

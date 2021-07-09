@@ -1,0 +1,20 @@
+- hosts: localhost
+  tasks:
+  - name: start an instance with a public IP address
+    community.aws.ec2_instance:
+      name: "{{ item }}"
+      key_name: "K8sKy"
+      vpc_subnet_id: subnet-b66a14fa
+      instance_type: t2.micro
+      region: ap-south-1
+      security_group: default
+      network:
+        assign_public_ip: true
+      image_id: ami-011c99152163a87ae
+      tags:
+        Name: "{{ item }}"
+    loop: 
+      - master
+      - node1
+      - node2
+
